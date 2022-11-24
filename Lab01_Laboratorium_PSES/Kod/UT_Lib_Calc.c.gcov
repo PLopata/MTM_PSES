@@ -1,0 +1,208 @@
+        -:    0:Source:UT_Lib_Calc.c
+        -:    0:Graph:UT_Lib_Calc.gcno
+        -:    0:Data:UT_Lib_Calc.gcda
+        -:    0:Runs:14
+        -:    1:/** ==================================================================================================================*\
+        -:    2:  @file UT_Lib_Calc.c
+        -:    3:
+        -:    4:  @brief Testy jednostkowe do Lib_Calc
+        -:    5:\*====================================================================================================================*/
+        -:    6:
+        -:    7:#include "acutest.h"
+        -:    8:#include "Std_Types.h"
+        -:    9:
+        -:   10:#include "Lib_Calc.c"   /* To nie pomyłka - taki include eksponuje zmienne statyczne dla testów */
+        -:   11:
+        -:   12:/**
+        -:   13:  @brief Test dodawania
+        -:   14:
+        -:   15:  Funkcja testująca dodawanie w bibliotece. Funkcje testowe acutest nie mogą zwracać ani przyjmować danych!
+        -:   16:*/
+        2:   17:void Test_Of_Lib_Calc_Add(void)
+        -:   18:{
+        -:   19:    sint32 result;
+        -:   20:    Std_ReturnType retv;
+        -:   21:
+        2:   22:    retv = Lib_Calc_Add(0L, 0L, &result);
+        -:   23:
+        2:   24:    TEST_CHECK(result == 0);       /* Test przejdzie jeżeli wyrażenie w nawiasach jest prawdziwe */
+        2:   25:    TEST_CHECK(retv == E_OK);
+        -:   26:
+        2:   27:    retv = Lib_Calc_Add(1L, -1L, &result);
+        -:   28:
+        2:   29:    TEST_CHECK(result == 0);
+        2:   30:    TEST_CHECK(retv == E_OK);
+        -:   31:
+        -:   32:    /* TUTAJ DOPISZ WIĘCEJ TESTÓW */
+        -:   33:
+        2:   34:    retv = Lib_Calc_Add(MAX32, MAX32, &result);
+        -:   35:
+        2:   36:    TEST_CHECK(result == -2);
+        2:   37:    TEST_CHECK(retv == E_NOT_OK);
+        -:   38:
+        2:   39:    retv = Lib_Calc_Add(MIN32, MIN32, &result);
+        -:   40:
+        2:   41:    TEST_CHECK(result == 0);
+        2:   42:    TEST_CHECK(retv == E_NOT_OK);
+        2:   43:}
+        -:   44:
+        -:   45:
+        -:   46:/**
+        -:   47:  @brief Test odejmowania
+        -:   48:
+        -:   49:  Funkcja testująca odejmowanie w bibliotece.
+        -:   50:*/
+        2:   51:void Test_Of_Lib_Calc_Sub(void)
+        -:   52:{
+        -:   53:    sint32 result;
+        -:   54:    Std_ReturnType retv;
+        -:   55:
+        2:   56:    retv = Lib_Calc_Sub(0L, 0L, &result);
+        -:   57:
+        2:   58:    TEST_CHECK(result == 0);
+        2:   59:    TEST_CHECK(retv == E_OK);
+        -:   60:
+        2:   61:    retv = Lib_Calc_Sub(1L, -1L, &result);
+        -:   62:
+        2:   63:    TEST_CHECK(result == 2L);
+        2:   64:    TEST_CHECK(retv == E_OK);
+        -:   65:
+        -:   66:    /* TUTAJ DOPISZ WIĘCEJ TESTÓW */
+        -:   67:    
+        2:   68:    retv = Lib_Calc_Sub(MAX32, MIN32, &result);
+        -:   69:
+        2:   70:    TEST_CHECK(result == -1);
+        2:   71:    TEST_CHECK(retv == E_NOT_OK);
+        -:   72:
+        2:   73:    retv = Lib_Calc_Sub(MIN32, MAX32, &result);
+        -:   74:
+        2:   75:    TEST_CHECK(result == 1);
+        2:   76:    TEST_CHECK(retv == E_NOT_OK);
+        2:   77:}
+        -:   78:
+        -:   79:/**
+        -:   80:  @brief Test mnożenia
+        -:   81:
+        -:   82:  Funkcja testująca mnożenie w bibliotece.
+        -:   83:*/
+        2:   84:void Test_Of_Lib_Calc_Mul(void)
+        -:   85:{
+        -:   86:    sint32 result;
+        -:   87:    Std_ReturnType retv;
+        -:   88:
+        2:   89:    retv = Lib_Calc_Mul(0L, 0L, &result);
+        -:   90:
+        2:   91:    TEST_CHECK(result == 0);
+        2:   92:    TEST_CHECK(retv == E_OK);
+        -:   93:
+        2:   94:    retv = Lib_Calc_Mul(1L, -1L, &result);
+        -:   95:
+        2:   96:    TEST_CHECK(result == -1L);
+        2:   97:    TEST_CHECK(retv == E_OK);
+        -:   98:
+        -:   99:    /* TUTAJ DOPISZ WIĘCEJ TESTÓW */
+        -:  100:    
+        2:  101:    retv = Lib_Calc_Mul(MAX32, 4, &result);
+        -:  102:
+        2:  103:    TEST_CHECK(result == -4);
+        2:  104:    TEST_CHECK(retv == E_NOT_OK);
+        2:  105:    retv = Lib_Calc_Mul(MIN32, 4, &result);
+        -:  106:
+        2:  107:    TEST_CHECK(result == 0);
+        2:  108:    TEST_CHECK(retv == E_NOT_OK);
+        2:  109:}
+        -:  110:
+        -:  111:
+        -:  112:/**
+        -:  113:  @brief Test dzielenia
+        -:  114:
+        -:  115:  Funkcja testująca dzielenie w bibliotece.
+        -:  116:*/
+        2:  117:void Test_Of_Lib_Calc_Div(void)
+        -:  118:{
+        -:  119:    sint32 result;
+        -:  120:    Std_ReturnType retv;
+        -:  121:
+        2:  122:    retv = Lib_Calc_Div(10L, 2L, &result);
+        -:  123:
+        2:  124:    TEST_CHECK(result == 5);
+        2:  125:    TEST_CHECK(retv == E_OK);
+        -:  126:
+        2:  127:    retv = Lib_Calc_Div(-10L, 2L, &result);
+        -:  128:
+        2:  129:    TEST_CHECK(result == -5L);
+        2:  130:    TEST_CHECK(retv == E_OK);
+        -:  131:
+        -:  132:    /* TUTAJ DOPISZ WIĘCEJ TESTÓW */
+        -:  133:    
+        2:  134:    retv = Lib_Calc_Div(1, 0, &result);
+        -:  135:
+        2:  136:    TEST_CHECK(result == MAX32);
+        2:  137:    TEST_CHECK(retv == E_NOT_OK);
+        -:  138:
+        2:  139:    retv = Lib_Calc_Div(-1, 0, &result);
+        -:  140:
+        2:  141:    TEST_CHECK(result == MIN32);
+        2:  142:    TEST_CHECK(retv == E_NOT_OK);
+        -:  143:
+        2:  144:    retv = Lib_Calc_Div(0, 0, &result);
+        -:  145:
+        2:  146:    TEST_CHECK(result == 0);
+        2:  147:    TEST_CHECK(retv == E_NOT_OK);
+        2:  148:}
+        -:  149:
+        -:  150:
+        -:  151:/**
+        -:  152:  @brief Test zapisu do pamięci
+        -:  153:
+        -:  154:  Funkcja testująca zapis danej do pamięci w bibliotece.
+        -:  155:*/
+        2:  156:void Test_Of_Lib_Calc_MemS(void)
+        -:  157:{
+        2:  158:    Lib_Calc_MemS(1);
+        2:  159:    TEST_CHECK(memory_value == 1);
+        -:  160:
+        2:  161:    Lib_Calc_MemS(MAX32);
+        2:  162:    TEST_CHECK(memory_value == MAX32);
+        -:  163:
+        2:  164:    Lib_Calc_MemS(MIN32);
+        2:  165:    TEST_CHECK(memory_value == MIN32);
+        2:  166:}
+        -:  167:
+        -:  168:
+        -:  169:/**
+        -:  170:  @brief Test odczytu z pamięci
+        -:  171:
+        -:  172:  Funkcja testująca odczyt danej do pamięci w bibliotece.
+        -:  173:*/
+        2:  174:void Test_Of_Lib_Calc_MemR(void)
+        -:  175:{
+        -:  176:    sint32 result;
+        -:  177:
+        2:  178:    memory_value = 0;
+        2:  179:    result = Lib_Calc_MemR();
+        2:  180:    TEST_CHECK(result == 0);
+        -:  181:
+        2:  182:    memory_value = MAX32;
+        2:  183:    result = Lib_Calc_MemR();
+        2:  184:    TEST_CHECK(result == MAX32);
+        -:  185:
+        2:  186:    memory_value = MIN32;
+        2:  187:    result = Lib_Calc_MemR();
+        2:  188:    TEST_CHECK(result == MIN32);
+        2:  189:}
+        -:  190:
+        -:  191:
+        -:  192:/*
+        -:  193:  Lista testów - wpisz tutaj wszystkie funkcje które mają być wykonane jako testy.
+        -:  194:*/
+        -:  195:TEST_LIST = {
+        -:  196:    { "Test of Lib_Calc_Add", Test_Of_Lib_Calc_Add   },   /* Format to { "nazwa testu", nazwa_funkcji } */
+        -:  197:    { "Test of Lib_Calc_Sub", Test_Of_Lib_Calc_Sub   },
+        -:  198:    { "Test_Of_Lib_Calc_Mul", Test_Of_Lib_Calc_Mul   },
+        -:  199:    { "Test_Of_Lib_Calc_Div", Test_Of_Lib_Calc_Div   },
+        -:  200:    { "Test_Of_Lib_Calc_MemS", Test_Of_Lib_Calc_MemS },
+        -:  201:    { "Test_Of_Lib_Calc_MemR", Test_Of_Lib_Calc_MemR },
+        -:  202:    { NULL, NULL }                                      /* To musi być na końcu */
+        -:  203:};
+        -:  204:
