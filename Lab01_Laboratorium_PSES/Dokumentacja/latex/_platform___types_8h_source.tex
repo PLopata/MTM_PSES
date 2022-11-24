@@ -1,0 +1,83 @@
+\hypertarget{_platform___types_8h_source}{}\doxysection{Platform\+\_\+\+Types.\+h}
+\label{_platform___types_8h_source}\index{Kod/Platform\_Types.h@{Kod/Platform\_Types.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PLATFORM\_TYPES\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PLATFORM\_TYPES\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{/*====================================================================================================================*\(\backslash\)}}
+\DoxyCodeLine{5 \textcolor{comment}{ \(\backslash\)@file Definicja typów standardowych Autosar 4.x+}}
+\DoxyCodeLine{6 \textcolor{comment}{}}
+\DoxyCodeLine{7 \textcolor{comment}{ Do użycia w ramach projektu z przedmiotu "{}Programowanie systemów elektoniki samochodowej"{}.}}
+\DoxyCodeLine{8 \textcolor{comment}{ Konfiguracja powinna być poprawna dla x86-\/64, z kompilatorami GCC lub Clang}}
+\DoxyCodeLine{9 \textcolor{comment}{}}
+\DoxyCodeLine{10 \textcolor{comment}{ Andrzej Wetula (c) 2020}}
+\DoxyCodeLine{11 \textcolor{comment}{\(\backslash\)*====================================================================================================================*/}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <stdint.h>}     \textcolor{comment}{/* Często spotykane uproszczenie przez zastosowanie standardowej biblioteki */}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{/* [SWS\_Platform\_00026] */}}
+\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} boolean;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{/* [SWS\_Platform\_00013], [SWS\_Platform\_00014], [SWS\_Platform\_00015], [SWS\_Platform\_00066] */}}
+\DoxyCodeLine{19 \textcolor{keyword}{typedef} uint8\_t uint8;}
+\DoxyCodeLine{20 \textcolor{keyword}{typedef} uint16\_t uint16;}
+\DoxyCodeLine{21 \textcolor{keyword}{typedef} uint32\_t uint32;}
+\DoxyCodeLine{22 \textcolor{keyword}{typedef} uint64\_t uint64;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{/* [SWS\_Platform\_00016], [SWS\_Platform\_00017], [SWS\_Platform\_00018], [SWS\_Platform\_00067] */}}
+\DoxyCodeLine{25 \textcolor{keyword}{typedef} int8\_t sint8;}
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} int16\_t sint16;}
+\DoxyCodeLine{27 \textcolor{keyword}{typedef} int32\_t sint32;}
+\DoxyCodeLine{28 \textcolor{keyword}{typedef} int64\_t sint64;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{/* [SWS\_Platform\_00020], [SWS\_Platform\_00021], [SWS\_Platform\_00022] */}}
+\DoxyCodeLine{31 \textcolor{keyword}{typedef} uint\_least8\_t uint8\_least;}
+\DoxyCodeLine{32 \textcolor{keyword}{typedef} uint\_least16\_t uint16\_least;}
+\DoxyCodeLine{33 \textcolor{keyword}{typedef} uint\_least32\_t uint32\_least;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{/* [SWS\_Platform\_00023], [SWS\_Platform\_00024], [SWS\_Platform\_00025] */}}
+\DoxyCodeLine{36 \textcolor{keyword}{typedef} int\_least8\_t sint8\_least;}
+\DoxyCodeLine{37 \textcolor{keyword}{typedef} int\_least16\_t sint16\_least;}
+\DoxyCodeLine{38 \textcolor{keyword}{typedef} int\_least32\_t sint32\_least;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{comment}{/* [SWS\_Platform\_00041], [SWS\_Platform\_00042] */}}
+\DoxyCodeLine{41 \textcolor{keyword}{typedef} \textcolor{keywordtype}{float} float32;}
+\DoxyCodeLine{42 \textcolor{keyword}{typedef} \textcolor{keywordtype}{double} float64;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{/* [SWS\_Platform\_00064] */}}
+\DoxyCodeLine{45 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47     CPU\_TYPE\_8,}
+\DoxyCodeLine{48     CPU\_TYPE\_16,}
+\DoxyCodeLine{49     CPU\_TYPE\_32,}
+\DoxyCodeLine{50     CPU\_TYPE\_64}
+\DoxyCodeLine{51 \} CPU\_TYPE;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{comment}{/* [SWS\_Platform\_00038] */}}
+\DoxyCodeLine{54 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56     MSB\_FIRST,}
+\DoxyCodeLine{57     LSB\_FIRST}
+\DoxyCodeLine{58 \} CPU\_BIT\_ORDER;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{/* [SWS\_Platform\_00039] */}}
+\DoxyCodeLine{61 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{62 \{}
+\DoxyCodeLine{63     HIGH\_BYTE\_FIRST,}
+\DoxyCodeLine{64     LOW\_BYTE\_FIRTS}
+\DoxyCodeLine{65 \} CPU\_BYTE\_ORDER;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{comment}{/* [SWS\_Platform\_00056] */}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#ifndef TRUE}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define TRUE    1}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#ifndef FALSE}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define FALSE   0}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PLATFORM\_TYPES\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,99 @@
+\hypertarget{_lib___calc_8h}{}\doxysection{Kod/\+Lib\+\_\+\+Calc.h File Reference}
+\label{_lib___calc_8h}\index{Kod/Lib\_Calc.h@{Kod/Lib\_Calc.h}}
+
+
+Bibiloteka Lib\+\_\+\+Calc -\/ nagłówek.  
+
+
+{\ttfamily \#include \char`\"{}Std\+\_\+\+Types.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Std\+\_\+\+Return\+Type \mbox{\hyperlink{_lib___calc_8h_ade5856eaf5f27b4f824cb3a230470f4d}{Lib\+\_\+\+Calc\+\_\+\+Add}} (sint32 arg1, sint32 arg2, sint32 $\ast$result)
+\begin{DoxyCompactList}\small\item\em Dodawanie. \end{DoxyCompactList}\item 
+Std\+\_\+\+Return\+Type \mbox{\hyperlink{_lib___calc_8h_a293cb1f156190d859aa5206dd6027309}{Lib\+\_\+\+Calc\+\_\+\+Sub}} (sint32 arg1, sint32 arg2, sint32 $\ast$result)
+\begin{DoxyCompactList}\small\item\em Odejmowanie. \end{DoxyCompactList}\item 
+Std\+\_\+\+Return\+Type \mbox{\hyperlink{_lib___calc_8h_a4dd611060fda6ff0816e4a1103713892}{Lib\+\_\+\+Calc\+\_\+\+Mul}} (sint32 arg1, sint32 arg2, sint32 $\ast$result)
+\begin{DoxyCompactList}\small\item\em Mnożenie. \end{DoxyCompactList}\item 
+Std\+\_\+\+Return\+Type \mbox{\hyperlink{_lib___calc_8h_af29f650b7cc7c1e5a6d7d15619bb21ab}{Lib\+\_\+\+Calc\+\_\+\+Div}} (sint32 arg1, sint32 arg2, sint32 $\ast$result)
+\begin{DoxyCompactList}\small\item\em Dzielenie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_lib___calc_8h_a955cb2afb6ad84b025abe3ecf11f0630}{Lib\+\_\+\+Calc\+\_\+\+MemS}} (sint32 mem)
+\begin{DoxyCompactList}\small\item\em Zapis do pamięci. \end{DoxyCompactList}\item 
+sint32 \mbox{\hyperlink{_lib___calc_8h_a8d0779c0ec1db51153777d72c2cd51d1}{Lib\+\_\+\+Calc\+\_\+\+MemR}} (void)
+\begin{DoxyCompactList}\small\item\em Odczyt z pamięci. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Bibiloteka Lib\+\_\+\+Calc -\/ nagłówek. 
+
+===================================================================================================================$\ast$\textbackslash{}
+
+Implementacja funkcjonalności podstawowej kalkukatora 4-\/działaniowego z pamięcią.
+
+\begin{DoxySeeAlso}{See also}
+Lib\+\_\+\+Calc.\+pdf $\ast$==================================================================================================================== 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_lib___calc_8h_ade5856eaf5f27b4f824cb3a230470f4d}\label{_lib___calc_8h_ade5856eaf5f27b4f824cb3a230470f4d}} 
+\index{Lib\_Calc.h@{Lib\_Calc.h}!Lib\_Calc\_Add@{Lib\_Calc\_Add}}
+\index{Lib\_Calc\_Add@{Lib\_Calc\_Add}!Lib\_Calc.h@{Lib\_Calc.h}}
+\doxysubsubsection{\texorpdfstring{Lib\_Calc\_Add()}{Lib\_Calc\_Add()}}
+{\footnotesize\ttfamily Std\+\_\+\+Return\+Type Lib\+\_\+\+Calc\+\_\+\+Add (\begin{DoxyParamCaption}\item[{sint32}]{arg1,  }\item[{sint32}]{arg2,  }\item[{sint32 $\ast$}]{result }\end{DoxyParamCaption})}
+
+
+
+Dodawanie. 
+
+Implementacja dodawania liczb 32-\/bitowych z kontrolą przepełnienia. Element projektu\+: \mbox{[}P2\mbox{]} \mbox{\Hypertarget{_lib___calc_8h_af29f650b7cc7c1e5a6d7d15619bb21ab}\label{_lib___calc_8h_af29f650b7cc7c1e5a6d7d15619bb21ab}} 
+\index{Lib\_Calc.h@{Lib\_Calc.h}!Lib\_Calc\_Div@{Lib\_Calc\_Div}}
+\index{Lib\_Calc\_Div@{Lib\_Calc\_Div}!Lib\_Calc.h@{Lib\_Calc.h}}
+\doxysubsubsection{\texorpdfstring{Lib\_Calc\_Div()}{Lib\_Calc\_Div()}}
+{\footnotesize\ttfamily Std\+\_\+\+Return\+Type Lib\+\_\+\+Calc\+\_\+\+Div (\begin{DoxyParamCaption}\item[{sint32}]{arg1,  }\item[{sint32}]{arg2,  }\item[{sint32 $\ast$}]{result }\end{DoxyParamCaption})}
+
+
+
+Dzielenie. 
+
+Implementacja dzielenia liczb 32-\/bitowych z kontrolą dzielenia przez 0. Element projektu\+: \mbox{[}P5\mbox{]}, \mbox{[}P6\mbox{]}, \mbox{[}P7\mbox{]}, \mbox{[}P8\mbox{]} \mbox{\Hypertarget{_lib___calc_8h_a8d0779c0ec1db51153777d72c2cd51d1}\label{_lib___calc_8h_a8d0779c0ec1db51153777d72c2cd51d1}} 
+\index{Lib\_Calc.h@{Lib\_Calc.h}!Lib\_Calc\_MemR@{Lib\_Calc\_MemR}}
+\index{Lib\_Calc\_MemR@{Lib\_Calc\_MemR}!Lib\_Calc.h@{Lib\_Calc.h}}
+\doxysubsubsection{\texorpdfstring{Lib\_Calc\_MemR()}{Lib\_Calc\_MemR()}}
+{\footnotesize\ttfamily sint32 Lib\+\_\+\+Calc\+\_\+\+MemR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Odczyt z pamięci. 
+
+Implementacja odczytu danej z pamięci Element projektu\+: \mbox{[}P10\mbox{]} \mbox{\Hypertarget{_lib___calc_8h_a955cb2afb6ad84b025abe3ecf11f0630}\label{_lib___calc_8h_a955cb2afb6ad84b025abe3ecf11f0630}} 
+\index{Lib\_Calc.h@{Lib\_Calc.h}!Lib\_Calc\_MemS@{Lib\_Calc\_MemS}}
+\index{Lib\_Calc\_MemS@{Lib\_Calc\_MemS}!Lib\_Calc.h@{Lib\_Calc.h}}
+\doxysubsubsection{\texorpdfstring{Lib\_Calc\_MemS()}{Lib\_Calc\_MemS()}}
+{\footnotesize\ttfamily void Lib\+\_\+\+Calc\+\_\+\+MemS (\begin{DoxyParamCaption}\item[{sint32}]{mem }\end{DoxyParamCaption})}
+
+
+
+Zapis do pamięci. 
+
+Implementacja zapisu danej do pamięci Element projektu\+: \mbox{[}P9\mbox{]} \mbox{\Hypertarget{_lib___calc_8h_a4dd611060fda6ff0816e4a1103713892}\label{_lib___calc_8h_a4dd611060fda6ff0816e4a1103713892}} 
+\index{Lib\_Calc.h@{Lib\_Calc.h}!Lib\_Calc\_Mul@{Lib\_Calc\_Mul}}
+\index{Lib\_Calc\_Mul@{Lib\_Calc\_Mul}!Lib\_Calc.h@{Lib\_Calc.h}}
+\doxysubsubsection{\texorpdfstring{Lib\_Calc\_Mul()}{Lib\_Calc\_Mul()}}
+{\footnotesize\ttfamily Std\+\_\+\+Return\+Type Lib\+\_\+\+Calc\+\_\+\+Mul (\begin{DoxyParamCaption}\item[{sint32}]{arg1,  }\item[{sint32}]{arg2,  }\item[{sint32 $\ast$}]{result }\end{DoxyParamCaption})}
+
+
+
+Mnożenie. 
+
+Implementacja mnożenia liczb 32-\/bitowych z kontrolą przepełnienia. Element projektu\+: \mbox{[}P4\mbox{]} \mbox{\Hypertarget{_lib___calc_8h_a293cb1f156190d859aa5206dd6027309}\label{_lib___calc_8h_a293cb1f156190d859aa5206dd6027309}} 
+\index{Lib\_Calc.h@{Lib\_Calc.h}!Lib\_Calc\_Sub@{Lib\_Calc\_Sub}}
+\index{Lib\_Calc\_Sub@{Lib\_Calc\_Sub}!Lib\_Calc.h@{Lib\_Calc.h}}
+\doxysubsubsection{\texorpdfstring{Lib\_Calc\_Sub()}{Lib\_Calc\_Sub()}}
+{\footnotesize\ttfamily Std\+\_\+\+Return\+Type Lib\+\_\+\+Calc\+\_\+\+Sub (\begin{DoxyParamCaption}\item[{sint32}]{arg1,  }\item[{sint32}]{arg2,  }\item[{sint32 $\ast$}]{result }\end{DoxyParamCaption})}
+
+
+
+Odejmowanie. 
+
+Implementacja odejmowania liczb 32-\/bitowych z kontrolą przepełnienia. Element projektu\+: \mbox{[}P3\mbox{]} 

@@ -1,0 +1,191 @@
+        -:    0:Source:Calc_Ab.c
+        -:    0:Graph:UT_Calc_Ab.gcno
+        -:    0:Data:UT_Calc_Ab.gcda
+        -:    0:Runs:12
+        -:    1:/** ==================================================================================================================*\
+        -:    2:  @file Calc_Ab.c
+        -:    3:
+        -:    4:  @brief Implementacja kalkulatora
+        -:    5:  
+        -:    6:  Implementacja kalkukatora 4-działaniowego z pamięcią.
+        -:    7:
+        -:    8:  @see Calc_Ab.pdf
+        -:    9:\*====================================================================================================================*/
+        -:   10:
+        -:   11:/*====================================================================================================================*\
+        -:   12:    Załączenie nagłówków
+        -:   13:\*====================================================================================================================*/
+        -:   14:#include "Lib_Calc.h"
+        -:   15:
+        -:   16:/*====================================================================================================================*\
+        -:   17:    Makra lokalne
+        -:   18:\*====================================================================================================================*/
+        -:   19:
+        -:   20:/*====================================================================================================================*\
+        -:   21:    Typy lokalne
+        -:   22:\*====================================================================================================================*/
+        -:   23:typedef enum {              /**< Typ służący do wyboru rodzaju operacji [P4]*/
+        -:   24:    CALC_ADD,
+        -:   25:    CALC_SUB,
+        -:   26:    CALC_MUL,
+        -:   27:    CALC_DIV
+        -:   28:} Calc_Operation_T;
+        -:   29:
+        -:   30:typedef enum {              /**< Typ służący do wyboru rodzaju operacji na pamięci [P8]*/
+        -:   31:    CALC_MEM_ADD, 
+        -:   32:    CALC_MEM_SUB, 
+        -:   33:    CALC_MEM_STO, 
+        -:   34:    CALC_MEM_ZERO
+        -:   35:} Calc_MemOp_T;
+        -:   36:/*====================================================================================================================*\
+        -:   37:    Zmienne globalne
+        -:   38:\*====================================================================================================================*/
+        -:   39:
+        -:   40:/*====================================================================================================================*\
+        -:   41:    Zmienne lokalne (statyczne)
+        -:   42:\*====================================================================================================================*/
+        -:   43:static sint32 akumulator;     /**< Akumulator kalkulatora [P2] */
+        -:   44:
+        -:   45:/*====================================================================================================================*\
+        -:   46:    Deklaracje funkcji lokalnych
+        -:   47:\*====================================================================================================================*/
+        -:   48:
+        -:   49:/*====================================================================================================================*\
+        -:   50:    Kod globalnych funkcji inline i makr funkcyjnych
+        -:   51:\*====================================================================================================================*/
+        -:   52:
+        -:   53:/*====================================================================================================================*\
+        -:   54:    Kod funkcji
+        -:   55:\*====================================================================================================================*/
+        -:   56:
+        -:   57:/**
+        -:   58:  @brief Zerowanie modułu
+        -:   59:
+        -:   60:  Funkcja zeruje wartość akumulatora i pamięci.
+        -:   61:  Realizuje [P9]
+        -:   62:*/
+        2:   63:void Calc_Reset(void)
+        -:   64:{
+        2:   65:    akumulator = 0L;
+        2:   66:    Lib_Calc_MemS(0L);
+        2:   67:}
+        -:   68:
+        -:   69:/**
+        -:   70:  @brief Zapis danej do akumulatora
+        -:   71:
+        -:   72:  Funkcja realizuje zapis danej do akumulatora. Nie nadpisuje wartości 0xFFFFFFFF.
+        -:   73:  Realizuje [P3]
+        -:   74:*/
+       22:   75:void Calc_Set_A(sint32 a)
+        -:   76:{
+       22:   77:    if(akumulator != 0xFFFFFFFF){
+       20:   78:        akumulator = a;
+        -:   79:    }
+       22:   80:}
+        -:   81:
+        -:   82:/**
+        -:   83:  @brief Odczyt danej z akumulatora
+        -:   84:
+        -:   85:  Funkcja realizuje odczyt danej z akumulatora. Nie nadpisuje wartości 0xFFFFFFFF.
+        -:   86:  Realizuje [P3]
+        -:   87:*/
+        6:   88:Std_ReturnType Calc_Get_A(sint32 *a)
+        -:   89:{
+        6:   90:    Std_ReturnType ret = E_OK;
+        -:   91:
+        6:   92:    if(akumulator == 0xFFFFFFFFL){
+        2:   93:        ret = E_NOT_OK;
+        2:   94:        return ret;
+        -:   95:    }
+        -:   96:    else
+        -:   97:    {
+        4:   98:        *a = (sint32) akumulator;
+        4:   99:        return ret;
+        -:  100:    }
+        -:  101:}
+        -:  102:
+        -:  103:
+        -:  104:/**
+        -:  105:  @brief Wykonanie operacji matematycznej
+        -:  106:
+        -:  107:  Funkcja wywołuje operacje matematyczne na akumulatorze oraz podanym operandzie. 
+        -:  108:  Realizuje [P5]
+        -:  109:*/
+       20:  110:void Calc_Oper(Calc_Operation_T op, sint32 arg2)
+        -:  111:{
+        -:  112:    sint32 result;
+        -:  113:
+       20:  114:    if(akumulator != 0xFFFFFFFF)
+        -:  115:    {
+       18:  116:        Std_ReturnType outValid = E_OK;
+       18:  117:        switch(op)
+        -:  118:        {
+        4:  119:            case CALC_ADD:
+        4:  120:                outValid = Lib_Calc_Add(akumulator, arg2, &result);
+        4:  121:                break;
+        4:  122:            case CALC_SUB:
+        4:  123:                outValid = Lib_Calc_Sub(akumulator, arg2, &result);
+        4:  124:                break;
+        4:  125:            case CALC_MUL:
+        4:  126:                outValid = Lib_Calc_Mul(akumulator, arg2, &result);
+        4:  127:                break;
+        4:  128:            case CALC_DIV:
+        4:  129:                outValid = Lib_Calc_Div(akumulator, arg2, &result);
+        4:  130:                break;
+        2:  131:            default:
+        2:  132:                return;
+        -:  133:        }
+        -:  134:
+       16:  135:        if(outValid == E_OK)
+        -:  136:        {
+        8:  137:            Calc_Set_A(result);
+        -:  138:        }
+        -:  139:        else
+        -:  140:        {
+        8:  141:            Calc_Set_A(0xFFFFFFFF);
+        -:  142:        }
+        -:  143:    }
+       18:  144:    return;
+        -:  145:}
+        -:  146:
+        -:  147:/**
+        -:  148:  @brief Wykonanie operacji matematycznej
+        -:  149:
+        -:  150:  Funkcja wywołuje operacje na pamięci kalkulatora
+        -:  151:  Realizuje [P5]
+        -:  152:*/
+       16:  153:void Calc_Mem(Calc_MemOp_T op)
+        -:  154:{
+       16:  155:    if(akumulator != 0xFFFFFFFF)
+        -:  156:    {
+        -:  157:        sint32 arg2, result;
+       14:  158:        Std_ReturnType outValid = E_OK;
+       14:  159:        switch(op)
+        -:  160:        {
+        4:  161:            case CALC_MEM_ADD:
+        4:  162:                arg2 = Lib_Calc_MemR();
+        4:  163:                outValid = Lib_Calc_Add(akumulator, arg2, &result);
+        4:  164:                if(outValid == E_OK)
+        -:  165:                {
+        2:  166:                    Lib_Calc_MemS(result);
+        -:  167:                }
+        4:  168:                break;
+        4:  169:            case CALC_MEM_SUB:
+        4:  170:                arg2 = Lib_Calc_MemR();
+        4:  171:                outValid = Lib_Calc_Sub(akumulator, arg2, &result);
+        4:  172:                if(outValid == E_OK)
+        -:  173:                {
+        2:  174:                    Lib_Calc_MemS(result);
+        -:  175:                }
+        4:  176:                break;
+        2:  177:            case CALC_MEM_STO:
+        2:  178:                Lib_Calc_MemS(akumulator);
+        2:  179:                break;
+        2:  180:            case CALC_MEM_ZERO:
+        2:  181:                Lib_Calc_MemS(0);
+        2:  182:                break;
+        2:  183:            default:
+        2:  184:                break;
+        -:  185:        }
+        -:  186:    }
+       16:  187:}

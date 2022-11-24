@@ -1,0 +1,45 @@
+\hypertarget{_std___types_8h_source}{}\doxysection{Std\+\_\+\+Types.\+h}
+\label{_std___types_8h_source}\index{Kod/Std\_Types.h@{Kod/Std\_Types.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef STD\_TYPES\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define STD\_TYPES\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Platform\_Types.h"{}}}
+\DoxyCodeLine{13 \textcolor{comment}{/* Normalnie byłoby też Compiler.h, ale dla uproszczenia nie jest wymagane w projekcie */}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{/* [SWS\_Std\_00015] */}}
+\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     uint16 vendorID;}
+\DoxyCodeLine{19     uint16 moduleID;}
+\DoxyCodeLine{20     uint8 sw\_major\_version;}
+\DoxyCodeLine{21     uint8 sw\_minor\_version;}
+\DoxyCodeLine{22     uint8 sw\_patch\_version;}
+\DoxyCodeLine{23 \} \mbox{\hyperlink{struct_std___version_info_type}{Std\_VersionInfoType}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{comment}{/* [SWS\_Std\_00005] */}}
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} uint8 Std\_ReturnType;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{/* [SWS\_Std\_00006] */}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#ifndef STATUSTYPEDEFINED}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define STATUSTYPEDEFINED}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define E\_OK        0x00U}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define E\_NOT\_OK    0x01U}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{/* [SWS\_Std\_00007] */}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define STD\_HIGH     0x01U   }\textcolor{comment}{/* Physical state 5V or 3.3V */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define STD\_LOW      0x00U   }\textcolor{comment}{/* Physical state 0V */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{/* [SWS\_Std\_00013] */}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define STD\_ACTIVE  0x01U    }\textcolor{comment}{/* Logical state active */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define STD\_IDLE    0x00U    }\textcolor{comment}{/* Logical state idle */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{comment}{/* [SWS\_Std\_00010] */}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define STD\_ON      0x01U}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define STD\_OFF     0x00U}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* STD\_TYPES\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

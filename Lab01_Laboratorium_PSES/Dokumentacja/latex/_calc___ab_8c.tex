@@ -1,0 +1,129 @@
+\hypertarget{_calc___ab_8c}{}\doxysection{Kod/\+Calc\+\_\+\+Ab.c File Reference}
+\label{_calc___ab_8c}\index{Kod/Calc\_Ab.c@{Kod/Calc\_Ab.c}}
+
+
+Implementacja kalkulatora.  
+
+
+{\ttfamily \#include \char`\"{}Lib\+\_\+\+Calc.\+h\char`\"{}}\newline
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_calc___ab_8c_a8b4387cef7a57fb38871c3289bf592f5}{Calc\+\_\+\+Operation\+\_\+T}} \{ \mbox{\hyperlink{_calc___ab_8c_a8b4387cef7a57fb38871c3289bf592f5a9cfa7dfed6346aa92a94eb734c854ae6}{CALC\+\_\+\+ADD}}
+, {\bfseries CALC\+\_\+\+SUB}
+, {\bfseries CALC\+\_\+\+MUL}
+, {\bfseries CALC\+\_\+\+DIV}
+ \}
+\item 
+enum \mbox{\hyperlink{_calc___ab_8c_a06ed9eea8e829691e4cc9d7b539997e0}{Calc\+\_\+\+Mem\+Op\+\_\+T}} \{ \mbox{\hyperlink{_calc___ab_8c_a06ed9eea8e829691e4cc9d7b539997e0a3c2fab457622e04439e8344e348d2e4b}{CALC\+\_\+\+MEM\+\_\+\+ADD}}
+, {\bfseries CALC\+\_\+\+MEM\+\_\+\+SUB}
+, {\bfseries CALC\+\_\+\+MEM\+\_\+\+STO}
+, {\bfseries CALC\+\_\+\+MEM\+\_\+\+ZERO}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_calc___ab_8c_aa27871352b089d3f1709353a5daa49cb}{Calc\+\_\+\+Reset}} (void)
+\begin{DoxyCompactList}\small\item\em Zerowanie modułu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_calc___ab_8c_a71e2aa47a32341d5afb7dd966c6ca848}{Calc\+\_\+\+Set\+\_\+A}} (sint32 a)
+\begin{DoxyCompactList}\small\item\em Zapis danej do akumulatora. \end{DoxyCompactList}\item 
+Std\+\_\+\+Return\+Type \mbox{\hyperlink{_calc___ab_8c_a785599d4b740ff38bb56013084ecf052}{Calc\+\_\+\+Get\+\_\+A}} (sint32 $\ast$a)
+\begin{DoxyCompactList}\small\item\em Odczyt danej z akumulatora. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_calc___ab_8c_a9dd9393c06dfd6ea0aed40ba50a8a89f}{Calc\+\_\+\+Oper}} (\mbox{\hyperlink{_calc___ab_8c_a8b4387cef7a57fb38871c3289bf592f5}{Calc\+\_\+\+Operation\+\_\+T}} op, sint32 arg2)
+\begin{DoxyCompactList}\small\item\em Wykonanie operacji matematycznej. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_calc___ab_8c_a3acc03d04f141e8b6580fb95fd7e6e66}{Calc\+\_\+\+Mem}} (\mbox{\hyperlink{_calc___ab_8c_a06ed9eea8e829691e4cc9d7b539997e0}{Calc\+\_\+\+Mem\+Op\+\_\+T}} op)
+\begin{DoxyCompactList}\small\item\em Wykonanie operacji matematycznej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementacja kalkulatora. 
+
+==================================================================================================================$\ast$\textbackslash{}
+
+Implementacja kalkukatora 4-\/działaniowego z pamięcią.
+
+\begin{DoxySeeAlso}{See also}
+Calc\+\_\+\+Ab.\+pdf $\ast$==================================================================================================================== 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_calc___ab_8c_a06ed9eea8e829691e4cc9d7b539997e0}\label{_calc___ab_8c_a06ed9eea8e829691e4cc9d7b539997e0}} 
+\index{Calc\_Ab.c@{Calc\_Ab.c}!Calc\_MemOp\_T@{Calc\_MemOp\_T}}
+\index{Calc\_MemOp\_T@{Calc\_MemOp\_T}!Calc\_Ab.c@{Calc\_Ab.c}}
+\doxysubsubsection{\texorpdfstring{Calc\_MemOp\_T}{Calc\_MemOp\_T}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_calc___ab_8c_a06ed9eea8e829691e4cc9d7b539997e0}{Calc\+\_\+\+Mem\+Op\+\_\+T}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CALC\_MEM\_ADD@{CALC\_MEM\_ADD}!Calc\_Ab.c@{Calc\_Ab.c}}\index{Calc\_Ab.c@{Calc\_Ab.c}!CALC\_MEM\_ADD@{CALC\_MEM\_ADD}}}\mbox{\Hypertarget{_calc___ab_8c_a06ed9eea8e829691e4cc9d7b539997e0a3c2fab457622e04439e8344e348d2e4b}\label{_calc___ab_8c_a06ed9eea8e829691e4cc9d7b539997e0a3c2fab457622e04439e8344e348d2e4b}} 
+CALC\+\_\+\+MEM\+\_\+\+ADD&Typ służący do wyboru rodzaju operacji na pamięci \mbox{[}P8\mbox{]} \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{_calc___ab_8c_a8b4387cef7a57fb38871c3289bf592f5}\label{_calc___ab_8c_a8b4387cef7a57fb38871c3289bf592f5}} 
+\index{Calc\_Ab.c@{Calc\_Ab.c}!Calc\_Operation\_T@{Calc\_Operation\_T}}
+\index{Calc\_Operation\_T@{Calc\_Operation\_T}!Calc\_Ab.c@{Calc\_Ab.c}}
+\doxysubsubsection{\texorpdfstring{Calc\_Operation\_T}{Calc\_Operation\_T}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_calc___ab_8c_a8b4387cef7a57fb38871c3289bf592f5}{Calc\+\_\+\+Operation\+\_\+T}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CALC\_ADD@{CALC\_ADD}!Calc\_Ab.c@{Calc\_Ab.c}}\index{Calc\_Ab.c@{Calc\_Ab.c}!CALC\_ADD@{CALC\_ADD}}}\mbox{\Hypertarget{_calc___ab_8c_a8b4387cef7a57fb38871c3289bf592f5a9cfa7dfed6346aa92a94eb734c854ae6}\label{_calc___ab_8c_a8b4387cef7a57fb38871c3289bf592f5a9cfa7dfed6346aa92a94eb734c854ae6}} 
+CALC\+\_\+\+ADD&Typ służący do wyboru rodzaju operacji \mbox{[}P4\mbox{]} \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_calc___ab_8c_a785599d4b740ff38bb56013084ecf052}\label{_calc___ab_8c_a785599d4b740ff38bb56013084ecf052}} 
+\index{Calc\_Ab.c@{Calc\_Ab.c}!Calc\_Get\_A@{Calc\_Get\_A}}
+\index{Calc\_Get\_A@{Calc\_Get\_A}!Calc\_Ab.c@{Calc\_Ab.c}}
+\doxysubsubsection{\texorpdfstring{Calc\_Get\_A()}{Calc\_Get\_A()}}
+{\footnotesize\ttfamily Std\+\_\+\+Return\+Type Calc\+\_\+\+Get\+\_\+A (\begin{DoxyParamCaption}\item[{sint32 $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Odczyt danej z akumulatora. 
+
+Funkcja realizuje odczyt danej z akumulatora. Nie nadpisuje wartości 0x\+FFFFFFFF. Realizuje \mbox{[}P3\mbox{]} \mbox{\Hypertarget{_calc___ab_8c_a3acc03d04f141e8b6580fb95fd7e6e66}\label{_calc___ab_8c_a3acc03d04f141e8b6580fb95fd7e6e66}} 
+\index{Calc\_Ab.c@{Calc\_Ab.c}!Calc\_Mem@{Calc\_Mem}}
+\index{Calc\_Mem@{Calc\_Mem}!Calc\_Ab.c@{Calc\_Ab.c}}
+\doxysubsubsection{\texorpdfstring{Calc\_Mem()}{Calc\_Mem()}}
+{\footnotesize\ttfamily void Calc\+\_\+\+Mem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_calc___ab_8c_a06ed9eea8e829691e4cc9d7b539997e0}{Calc\+\_\+\+Mem\+Op\+\_\+T}}}]{op }\end{DoxyParamCaption})}
+
+
+
+Wykonanie operacji matematycznej. 
+
+Funkcja wywołuje operacje na pamięci kalkulatora Realizuje \mbox{[}P5\mbox{]} \mbox{\Hypertarget{_calc___ab_8c_a9dd9393c06dfd6ea0aed40ba50a8a89f}\label{_calc___ab_8c_a9dd9393c06dfd6ea0aed40ba50a8a89f}} 
+\index{Calc\_Ab.c@{Calc\_Ab.c}!Calc\_Oper@{Calc\_Oper}}
+\index{Calc\_Oper@{Calc\_Oper}!Calc\_Ab.c@{Calc\_Ab.c}}
+\doxysubsubsection{\texorpdfstring{Calc\_Oper()}{Calc\_Oper()}}
+{\footnotesize\ttfamily void Calc\+\_\+\+Oper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_calc___ab_8c_a8b4387cef7a57fb38871c3289bf592f5}{Calc\+\_\+\+Operation\+\_\+T}}}]{op,  }\item[{sint32}]{arg2 }\end{DoxyParamCaption})}
+
+
+
+Wykonanie operacji matematycznej. 
+
+Funkcja wywołuje operacje matematyczne na akumulatorze oraz podanym operandzie. Realizuje \mbox{[}P5\mbox{]} \mbox{\Hypertarget{_calc___ab_8c_aa27871352b089d3f1709353a5daa49cb}\label{_calc___ab_8c_aa27871352b089d3f1709353a5daa49cb}} 
+\index{Calc\_Ab.c@{Calc\_Ab.c}!Calc\_Reset@{Calc\_Reset}}
+\index{Calc\_Reset@{Calc\_Reset}!Calc\_Ab.c@{Calc\_Ab.c}}
+\doxysubsubsection{\texorpdfstring{Calc\_Reset()}{Calc\_Reset()}}
+{\footnotesize\ttfamily void Calc\+\_\+\+Reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Zerowanie modułu. 
+
+Funkcja zeruje wartość akumulatora i pamięci. Realizuje \mbox{[}P9\mbox{]} \mbox{\Hypertarget{_calc___ab_8c_a71e2aa47a32341d5afb7dd966c6ca848}\label{_calc___ab_8c_a71e2aa47a32341d5afb7dd966c6ca848}} 
+\index{Calc\_Ab.c@{Calc\_Ab.c}!Calc\_Set\_A@{Calc\_Set\_A}}
+\index{Calc\_Set\_A@{Calc\_Set\_A}!Calc\_Ab.c@{Calc\_Ab.c}}
+\doxysubsubsection{\texorpdfstring{Calc\_Set\_A()}{Calc\_Set\_A()}}
+{\footnotesize\ttfamily void Calc\+\_\+\+Set\+\_\+A (\begin{DoxyParamCaption}\item[{sint32}]{a }\end{DoxyParamCaption})}
+
+
+
+Zapis danej do akumulatora. 
+
+Funkcja realizuje zapis danej do akumulatora. Nie nadpisuje wartości 0x\+FFFFFFFF. Realizuje \mbox{[}P3\mbox{]} 

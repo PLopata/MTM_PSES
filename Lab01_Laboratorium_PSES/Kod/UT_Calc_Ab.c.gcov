@@ -1,0 +1,428 @@
+        -:    0:Source:UT_Calc_Ab.c
+        -:    0:Graph:UT_Calc_Ab.gcno
+        -:    0:Data:UT_Calc_Ab.gcda
+        -:    0:Runs:12
+        -:    1:/** ==================================================================================================================*\
+        -:    2:  @file UT_Calc_Ab.c
+        -:    3:
+        -:    4:  @brief Testy jednostkowe do Calc_Ab
+        -:    5:\*====================================================================================================================*/
+        -:    6:#include "Std_Types.h"
+        -:    7:
+        -:    8:#include "acutest.h"
+        -:    9:#include "fff.h"
+        -:   10:
+        -:   11:#include "Calc_Ab.c"
+        -:   12:
+        -:   13:DEFINE_FFF_GLOBALS;
+        -:   14:
+      46*:   15:FAKE_VOID_FUNC(Lib_Calc_MemS, sint32);
+------------------
+Lib_Calc_MemS_reset:
+       36:   15:FAKE_VOID_FUNC(Lib_Calc_MemS, sint32);
+------------------
+Lib_Calc_MemS:
+      10*:   15:FAKE_VOID_FUNC(Lib_Calc_MemS, sint32);
+------------------
+      44*:   16:FAKE_VALUE_FUNC(sint32, Lib_Calc_MemR);
+------------------
+Lib_Calc_MemR_reset:
+       36:   16:FAKE_VALUE_FUNC(sint32, Lib_Calc_MemR);
+------------------
+Lib_Calc_MemR:
+       8*:   16:FAKE_VALUE_FUNC(sint32, Lib_Calc_MemR);
+------------------
+      44*:   17:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Add, sint32, sint32, sint32*);
+------------------
+Lib_Calc_Add_reset:
+       36:   17:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Add, sint32, sint32, sint32*);
+------------------
+Lib_Calc_Add:
+       8*:   17:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Add, sint32, sint32, sint32*);
+------------------
+      44*:   18:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Sub, sint32, sint32, sint32*);
+------------------
+Lib_Calc_Sub_reset:
+       36:   18:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Sub, sint32, sint32, sint32*);
+------------------
+Lib_Calc_Sub:
+       8*:   18:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Sub, sint32, sint32, sint32*);
+------------------
+      40*:   19:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Mul, sint32, sint32, sint32*);
+------------------
+Lib_Calc_Mul_reset:
+       36:   19:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Mul, sint32, sint32, sint32*);
+------------------
+Lib_Calc_Mul:
+       4*:   19:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Mul, sint32, sint32, sint32*);
+------------------
+      40*:   20:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Div, sint32, sint32, sint32*);
+------------------
+Lib_Calc_Div_reset:
+       36:   20:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Div, sint32, sint32, sint32*);
+------------------
+Lib_Calc_Div:
+       4*:   20:FAKE_VALUE_FUNC(Std_ReturnType, Lib_Calc_Div, sint32, sint32, sint32*);
+------------------
+        -:   21:
+        4:   22:Std_ReturnType custom_Lib_Calc_Add_Passed(sint32 arg0, sint32 arg1, sint32* resVal){
+        4:   23:  *resVal = arg0 + arg1;
+        4:   24:  return E_OK;
+        -:   25:}
+        -:   26:
+        4:   27:Std_ReturnType custom_Lib_Calc_Add_Failed(sint32 arg0, sint32 arg1, sint32* resVal){
+        4:   28:  return E_NOT_OK;
+        -:   29:}
+        -:   30:
+        4:   31:Std_ReturnType custom_Lib_Calc_Sub_Passed(sint32 arg0, sint32 arg1, sint32* resVal){
+        4:   32:  *resVal = arg0 - arg1;
+        4:   33:  return E_OK;
+        -:   34:}
+        -:   35:
+        4:   36:Std_ReturnType custom_Lib_Calc_Sub_Failed(sint32 arg0, sint32 arg1, sint32* resVal){
+        4:   37:  return E_NOT_OK;
+        -:   38:}
+        -:   39:
+        2:   40:Std_ReturnType custom_Lib_Calc_Mul_Passed(sint32 arg0, sint32 arg1, sint32* resVal){
+        2:   41:  *resVal = arg0 * arg1;
+        2:   42:  return E_OK;
+        -:   43:}
+        -:   44:
+        2:   45:Std_ReturnType custom_Lib_Calc_Mul_Failed(sint32 arg0, sint32 arg1, sint32* resVal){
+        2:   46:  return E_NOT_OK;
+        -:   47:}
+        -:   48:
+        2:   49:Std_ReturnType custom_Lib_Calc_Div_Passed(sint32 arg0, sint32 arg1, sint32* resVal){
+        2:   50:  *resVal = arg0 / arg1;
+        2:   51:  return E_OK;
+        -:   52:}
+        -:   53:
+        2:   54:Std_ReturnType custom_Lib_Calc_Div_Failed(sint32 arg0, sint32 arg1, sint32* resVal){
+        2:   55:  return E_NOT_OK;
+        -:   56:}
+        -:   57:
+        -:   58:
+        -:   59:/**
+        -:   60:  @brief Reset mocków funckji
+        -:   61:
+        -:   62:  Funkcja resetująca mocki funkcji
+        -:   63:*/
+       36:   64:void Preconditions(){
+       36:   65:  Lib_Calc_MemS_reset();
+       36:   66:  Lib_Calc_MemR_reset();
+       36:   67:  Lib_Calc_Add_reset();
+       36:   68:  Lib_Calc_Sub_reset();
+       36:   69:  Lib_Calc_Mul_reset();
+       36:   70:  Lib_Calc_Div_reset();
+       36:   71:}
+        -:   72:
+        -:   73:/**
+        -:   74:  @brief Test zerowania modułu
+        -:   75:
+        -:   76:  Funkcja testująca reset modułu.
+        -:   77:*/
+        2:   78:void Test_Of_Calc_Reset(void)
+        -:   79:{
+        2:   80:    akumulator = 0xFFFFFFFFL;
+        2:   81:    Calc_Reset();
+        -:   82:
+        2:   83:    TEST_CHECK(Lib_Calc_MemS_fake.call_count == 1);
+        2:   84:    TEST_CHECK(Lib_Calc_MemS_fake.arg0_val == 0L);
+        2:   85:    TEST_CHECK(akumulator == 0L);
+        2:   86:}
+        -:   87:
+        -:   88:/**
+        -:   89:  @brief Test zapisu danych do akumulatora
+        -:   90:
+        -:   91:  Funkcja testująca zapis danych do akumulatora
+        -:   92:*/
+        2:   93:void Test_Of_Calc_Set_A(void)
+        -:   94:{
+        2:   95:    akumulator = 0x00000000L;
+        2:   96:    Calc_Set_A(10);
+        2:   97:    TEST_CHECK(akumulator == 10L);
+        -:   98:
+        2:   99:    akumulator = 0x00000000L;
+        2:  100:    Calc_Set_A(0xFFFFFFFFL);
+        2:  101:    TEST_CHECK(akumulator == 0xFFFFFFFFL);
+        -:  102:    
+        2:  103:    akumulator = 0xFFFFFFFFL;
+        2:  104:    Calc_Set_A(0x10L);
+        2:  105:    TEST_CHECK(akumulator == 0xFFFFFFFFL);
+        2:  106:}
+        -:  107:
+        -:  108:/**
+        -:  109:  @brief Test odczytu danych z akumulatora
+        -:  110:
+        -:  111:  Funkcja testująca odczyt danych z akumulatora
+        -:  112:*/
+        2:  113:void Test_Of_Calc_Get_A(void)
+        -:  114:{
+        -:  115:    Std_ReturnType retVal;
+        -:  116:    sint32 result;
+        -:  117:    
+        2:  118:    akumulator = 0L;
+        2:  119:    retVal = Calc_Get_A(&result);
+        2:  120:    TEST_CHECK(result == 0L);
+        2:  121:    TEST_CHECK(retVal == E_OK);
+        -:  122:
+        2:  123:    akumulator = 10L;
+        2:  124:    retVal = Calc_Get_A(&result);
+        2:  125:    TEST_CHECK(result == 10L);
+        2:  126:    TEST_CHECK(retVal == E_OK);
+        -:  127:
+        2:  128:    akumulator = 0xFFFFFFFFL;
+        2:  129:    retVal = Calc_Get_A(&result);
+        2:  130:    TEST_CHECK(result == 10L);        //previous value
+        2:  131:    TEST_CHECK(retVal == E_NOT_OK);
+        2:  132:}
+        -:  133:
+        -:  134:/**
+        -:  135:  @brief Test wykonania wszystkich operacji
+        -:  136:
+        -:  137:  Funkcja testująca wykonanie wszystkich operacji
+        -:  138:*/
+        2:  139:void Test_Of_Calc_Oper(void)
+        -:  140:{
+        -:  141:    sint32 arg2;
+        -:  142:    
+        -:  143:    // Test correct operation of CALC_ADD
+        2:  144:    Preconditions();
+        2:  145:    akumulator = 0L;
+        2:  146:    arg2 = 10;
+        2:  147:    Lib_Calc_Add_fake.custom_fake = custom_Lib_Calc_Add_Passed;
+        2:  148:    Lib_Calc_Add_fake.return_val = E_OK;
+        2:  149:    Calc_Oper(CALC_ADD, arg2);
+        2:  150:    TEST_CHECK(Lib_Calc_Add_fake.call_count == 1);
+        2:  151:    TEST_CHECK(Lib_Calc_Add_fake.arg0_val == 0L);
+        2:  152:    TEST_CHECK(Lib_Calc_Add_fake.arg1_val == 10L);
+        2:  153:    TEST_CHECK(Lib_Calc_Add_fake.return_val == E_OK);
+        2:  154:    TEST_CHECK(akumulator == 10L);
+        -:  155:
+        -:  156:    // Test incorrect operation of CALC_ADD
+        2:  157:    Preconditions();
+        2:  158:    akumulator = 2147483647L;
+        2:  159:    Lib_Calc_Add_fake.custom_fake = custom_Lib_Calc_Add_Failed;
+        2:  160:    Lib_Calc_Add_fake.return_val = E_NOT_OK;
+        2:  161:    Calc_Oper(CALC_ADD, 2147483647L);
+        2:  162:    TEST_CHECK(Lib_Calc_Add_fake.call_count == 1);
+        2:  163:    TEST_CHECK(Lib_Calc_Add_fake.arg0_val == 2147483647L);
+        2:  164:    TEST_CHECK(Lib_Calc_Add_fake.arg1_val == 2147483647L);
+        2:  165:    TEST_CHECK(Lib_Calc_Add_fake.return_val == E_NOT_OK);
+        2:  166:    TEST_CHECK(akumulator == 0xFFFFFFFFL);
+        -:  167:    
+        -:  168:    // Test correct operation of CALC_SUB
+        2:  169:    Preconditions();
+        2:  170:    akumulator = 0L;
+        2:  171:    Lib_Calc_Sub_fake.custom_fake = custom_Lib_Calc_Sub_Passed;
+        2:  172:    Lib_Calc_Sub_fake.return_val = E_OK;
+        2:  173:    Calc_Oper(CALC_SUB, 10);
+        2:  174:    TEST_CHECK(Lib_Calc_Sub_fake.call_count == 1);
+        2:  175:    TEST_CHECK(Lib_Calc_Sub_fake.arg0_val == 0L);
+        2:  176:    TEST_CHECK(Lib_Calc_Sub_fake.arg1_val == 10L);
+        2:  177:    TEST_CHECK(Lib_Calc_Sub_fake.return_val == E_OK);
+        2:  178:    TEST_CHECK(akumulator == -10L);
+        -:  179:
+        -:  180:    // Test incorrect operation of CALC_SUB
+        2:  181:    Preconditions();
+        2:  182:    akumulator = -2147483648L;
+        2:  183:    Lib_Calc_Sub_fake.custom_fake = custom_Lib_Calc_Sub_Failed;
+        2:  184:    Lib_Calc_Sub_fake.return_val = E_NOT_OK;
+        2:  185:    Calc_Oper(CALC_SUB, 2147483647L);
+        2:  186:    TEST_CHECK(Lib_Calc_Sub_fake.call_count == 1);
+        2:  187:    TEST_CHECK(Lib_Calc_Sub_fake.arg0_val == -2147483648L);
+        2:  188:    TEST_CHECK(Lib_Calc_Sub_fake.arg1_val == 2147483647L);
+        2:  189:    TEST_CHECK(Lib_Calc_Sub_fake.return_val == E_NOT_OK);
+        2:  190:    TEST_CHECK(akumulator == 0xFFFFFFFFL);
+        -:  191:    
+        -:  192:    // Test correct operation of CALC_MUL
+        2:  193:    Preconditions();
+        2:  194:    akumulator = 2L;
+        2:  195:    Lib_Calc_Mul_fake.custom_fake = custom_Lib_Calc_Mul_Passed;
+        2:  196:    Lib_Calc_Mul_fake.return_val = E_OK;
+        2:  197:    Calc_Oper(CALC_MUL, 10);
+        2:  198:    TEST_CHECK(Lib_Calc_Mul_fake.call_count == 1);
+        2:  199:    TEST_CHECK(Lib_Calc_Mul_fake.arg0_val == 2);
+        2:  200:    TEST_CHECK(Lib_Calc_Mul_fake.arg1_val == 10);
+        2:  201:    TEST_CHECK(Lib_Calc_Mul_fake.return_val == E_OK);
+        2:  202:    TEST_CHECK(akumulator == 20L);
+        -:  203:
+        -:  204:    // Test incorrect operation of CALC_MUL
+        2:  205:    Preconditions();
+        2:  206:    akumulator = 2147483647L;
+        2:  207:    Lib_Calc_Mul_fake.custom_fake = custom_Lib_Calc_Mul_Failed;
+        2:  208:    Lib_Calc_Mul_fake.return_val = E_NOT_OK;
+        2:  209:    Calc_Oper(CALC_MUL, 4);
+        2:  210:    TEST_CHECK(Lib_Calc_Mul_fake.call_count == 1);
+        2:  211:    TEST_CHECK(Lib_Calc_Mul_fake.arg0_val == 2147483647L);
+        2:  212:    TEST_CHECK(Lib_Calc_Mul_fake.arg1_val == 4);
+        2:  213:    TEST_CHECK(Lib_Calc_Mul_fake.return_val == E_NOT_OK);
+        2:  214:    TEST_CHECK(akumulator == 0xFFFFFFFFL);
+        -:  215:    
+        -:  216:    // Test correct operation of CALC_DIV
+        2:  217:    Preconditions();
+        2:  218:    akumulator = 200L;
+        2:  219:    Lib_Calc_Div_fake.custom_fake = custom_Lib_Calc_Div_Passed;
+        2:  220:    Lib_Calc_Div_fake.return_val = E_OK;
+        2:  221:    Calc_Oper(CALC_DIV, 10);
+        2:  222:    TEST_CHECK(Lib_Calc_Div_fake.call_count == 1);
+        2:  223:    TEST_CHECK(Lib_Calc_Div_fake.arg0_val == 200L);
+        2:  224:    TEST_CHECK(Lib_Calc_Div_fake.arg1_val == 10);
+        2:  225:    TEST_CHECK(Lib_Calc_Div_fake.return_val == E_OK);
+        2:  226:    TEST_CHECK(akumulator == 20L);
+        -:  227:
+        -:  228:    // Test incorrect operation of CALC_DIV
+        2:  229:    Preconditions();
+        2:  230:    akumulator = 20;
+        2:  231:    Lib_Calc_Div_fake.custom_fake = custom_Lib_Calc_Div_Failed;
+        2:  232:    Lib_Calc_Div_fake.return_val = E_NOT_OK;
+        2:  233:    Calc_Oper(CALC_DIV, 0);
+        2:  234:    TEST_CHECK(Lib_Calc_Div_fake.call_count == 1);
+        2:  235:    TEST_CHECK(Lib_Calc_Div_fake.arg0_val == 20L);
+        2:  236:    TEST_CHECK(Lib_Calc_Div_fake.arg1_val == 0);
+        2:  237:    TEST_CHECK(Lib_Calc_Div_fake.return_val == E_NOT_OK);
+        2:  238:    TEST_CHECK(akumulator == 0xFFFFFFFFL);
+        -:  239:
+        -:  240:    // Test invalid command
+        2:  241:    Preconditions();
+        2:  242:    akumulator = 11;
+        2:  243:    Calc_Oper(4, 0);
+        2:  244:    TEST_CHECK(akumulator == 11);
+        -:  245:
+        -:  246:    // Test invalid akumulator
+        2:  247:    Preconditions();
+        2:  248:    akumulator = 0xFFFFFFFF;
+        2:  249:    Calc_Oper(CALC_ADD, -10);
+        2:  250:    TEST_CHECK(Lib_Calc_Add_fake.call_count == 0);
+        2:  251:    TEST_CHECK(Lib_Calc_Sub_fake.call_count == 0);
+        2:  252:    TEST_CHECK(Lib_Calc_Mul_fake.call_count == 0);
+        2:  253:    TEST_CHECK(Lib_Calc_Div_fake.call_count == 0);
+        2:  254:    TEST_CHECK(akumulator == 0xFFFFFFFF);
+        2:  255:}
+        -:  256:
+        -:  257:
+        -:  258:/**
+        -:  259:  @brief Test wykonania wszystkich operacji na pamięci kalkulatora
+        -:  260:
+        -:  261:  Funkcja testująca wykonanie wszystkich operacji na pamięci kalkulatora
+        -:  262:*/
+        2:  263:void Test_Of_Calc_Mem(void)
+        -:  264:{
+        -:  265:    // Test correct operation of CALC_MEM_ADD
+        2:  266:    Preconditions();
+        2:  267:    akumulator = 0L;
+        2:  268:    Lib_Calc_MemR_fake.return_val = 10;
+        2:  269:    Lib_Calc_Add_fake.custom_fake = custom_Lib_Calc_Add_Passed;
+        2:  270:    Lib_Calc_Add_fake.return_val = E_OK;
+        2:  271:    Calc_Mem(CALC_MEM_ADD);
+        2:  272:    TEST_CHECK(Lib_Calc_MemR_fake.call_count == 1);
+        2:  273:    TEST_CHECK(Lib_Calc_MemR_fake.return_val == 10);
+        2:  274:    TEST_CHECK(Lib_Calc_Add_fake.call_count == 1);
+        2:  275:    TEST_CHECK(Lib_Calc_Add_fake.arg0_val == 0);
+        2:  276:    TEST_CHECK(Lib_Calc_Add_fake.arg1_val == 10);
+        2:  277:    TEST_CHECK(Lib_Calc_Add_fake.return_val == E_OK);
+        2:  278:    TEST_CHECK(Lib_Calc_MemS_fake.call_count == 1);
+        2:  279:    TEST_CHECK(Lib_Calc_MemS_fake.arg0_val = 10);
+        2:  280:    TEST_CHECK(akumulator == 0L);
+        -:  281:
+        -:  282:    // Test incorrect operation of CALC_MEM_ADD
+        2:  283:    Preconditions();
+        2:  284:    akumulator = 2147483647L;
+        2:  285:    Lib_Calc_MemR_fake.return_val = 2147483647L;
+        2:  286:    Lib_Calc_Add_fake.custom_fake = custom_Lib_Calc_Add_Failed;
+        2:  287:    Lib_Calc_Add_fake.return_val = E_NOT_OK;
+        2:  288:    Calc_Mem(CALC_MEM_ADD);
+        2:  289:    TEST_CHECK(Lib_Calc_MemR_fake.call_count == 1);
+        2:  290:    TEST_CHECK(Lib_Calc_MemR_fake.return_val == 2147483647L);
+        2:  291:    TEST_CHECK(Lib_Calc_Add_fake.call_count == 1);
+        2:  292:    TEST_CHECK(Lib_Calc_Add_fake.arg0_val == 2147483647L);
+        2:  293:    TEST_CHECK(Lib_Calc_Add_fake.arg1_val == 2147483647L);
+        2:  294:    TEST_CHECK(Lib_Calc_Add_fake.return_val == E_NOT_OK);
+        2:  295:    TEST_CHECK(Lib_Calc_MemS_fake.call_count == 0);
+        2:  296:    TEST_CHECK(akumulator == 2147483647L);
+        -:  297:    
+        -:  298:    // Test correct operation of CALC_MEM_SUB
+        2:  299:    Preconditions();
+        2:  300:    akumulator = 0L;
+        2:  301:    Lib_Calc_MemR_fake.return_val = 10;
+        2:  302:    Lib_Calc_Sub_fake.custom_fake = custom_Lib_Calc_Sub_Passed;
+        2:  303:    Lib_Calc_Sub_fake.return_val = E_OK;
+        2:  304:    Calc_Mem(CALC_MEM_SUB);
+        2:  305:    TEST_CHECK(Lib_Calc_MemR_fake.call_count == 1);
+        2:  306:    TEST_CHECK(Lib_Calc_MemR_fake.return_val == 10);
+        2:  307:    TEST_CHECK(Lib_Calc_Sub_fake.call_count == 1);
+        2:  308:    TEST_CHECK(Lib_Calc_Sub_fake.arg0_val == 0);
+        2:  309:    TEST_CHECK(Lib_Calc_Sub_fake.arg1_val == 10);
+        2:  310:    TEST_CHECK(Lib_Calc_Sub_fake.return_val == E_OK);
+        2:  311:    TEST_CHECK(Lib_Calc_MemS_fake.call_count == 1);
+        2:  312:    TEST_CHECK(Lib_Calc_MemS_fake.arg0_val = -10);
+        2:  313:    TEST_CHECK(akumulator == 0);
+        -:  314:
+        -:  315:    // Test incorrect operation of CALC_MEM_SUB
+        2:  316:    Preconditions();
+        2:  317:    akumulator = -2147483648L;
+        2:  318:    Lib_Calc_MemR_fake.return_val = 2147483647L;
+        2:  319:    Lib_Calc_Sub_fake.custom_fake = custom_Lib_Calc_Sub_Failed;
+        2:  320:    Lib_Calc_Sub_fake.return_val = E_NOT_OK;
+        2:  321:    Calc_Mem(CALC_MEM_SUB);
+        2:  322:    TEST_CHECK(Lib_Calc_MemR_fake.call_count == 1);
+        2:  323:    TEST_CHECK(Lib_Calc_MemR_fake.return_val == 2147483647L);
+        2:  324:    TEST_CHECK(Lib_Calc_Sub_fake.call_count == 1);
+        2:  325:    TEST_CHECK(Lib_Calc_Sub_fake.arg0_val == -2147483648L);
+        2:  326:    TEST_CHECK(Lib_Calc_Sub_fake.arg1_val == 2147483647L);
+        2:  327:    TEST_CHECK(Lib_Calc_Sub_fake.return_val == E_NOT_OK);
+        2:  328:    TEST_CHECK(Lib_Calc_MemS_fake.call_count == 0);
+        2:  329:    TEST_CHECK(akumulator == -2147483648L);
+        -:  330:    
+        -:  331:    // Test correct operation of CALC_MEM_STO
+        2:  332:    Preconditions();
+        2:  333:    akumulator = 2L;
+        2:  334:    Calc_Mem(CALC_MEM_STO);
+        2:  335:    TEST_CHECK(Lib_Calc_MemS_fake.call_count == 1);
+        2:  336:    TEST_CHECK(Lib_Calc_MemS_fake.arg0_val == 2L);
+        2:  337:    TEST_CHECK(akumulator == 2L);
+        -:  338:
+        -:  339:    // Test correct operation of CALC_MEM_STO
+        2:  340:    Preconditions();
+        2:  341:    Calc_Mem(CALC_MEM_ZERO);
+        2:  342:    TEST_CHECK(Lib_Calc_MemS_fake.call_count == 1);
+        2:  343:    TEST_CHECK(Lib_Calc_MemS_fake.arg0_val == 0L);
+        -:  344:    
+        -:  345:    // Test invalid command
+        2:  346:    Preconditions();
+        2:  347:    akumulator = 10L;
+        2:  348:    Calc_Mem(4);
+        2:  349:    TEST_CHECK(Lib_Calc_MemS_fake.call_count == 0);
+        2:  350:    TEST_CHECK(Lib_Calc_MemR_fake.call_count == 0);
+        2:  351:    TEST_CHECK(Lib_Calc_Add_fake.call_count == 0);
+        2:  352:    TEST_CHECK(Lib_Calc_Sub_fake.call_count == 0);
+        2:  353:    TEST_CHECK(Lib_Calc_Mul_fake.call_count == 0);
+        2:  354:    TEST_CHECK(Lib_Calc_Div_fake.call_count == 0);
+        2:  355:    TEST_CHECK(akumulator == 10L);
+        -:  356:    
+        -:  357:    // Test incorrect value of akumulator
+        2:  358:    Preconditions();
+        2:  359:    akumulator = 0xFFFFFFFF;
+        2:  360:    Calc_Mem(CALC_MEM_ADD);
+        2:  361:    TEST_CHECK(Lib_Calc_MemS_fake.call_count == 0);
+        2:  362:    TEST_CHECK(Lib_Calc_MemR_fake.call_count == 0);
+        2:  363:    TEST_CHECK(Lib_Calc_Add_fake.call_count == 0);
+        2:  364:    TEST_CHECK(Lib_Calc_Sub_fake.call_count == 0);
+        2:  365:    TEST_CHECK(Lib_Calc_Mul_fake.call_count == 0);
+        2:  366:    TEST_CHECK(Lib_Calc_Div_fake.call_count == 0);
+        2:  367:    TEST_CHECK(akumulator = 0xFFFFFFFFL);
+        2:  368:}
+        -:  369:
+        -:  370:
+        -:  371:/*
+        -:  372:  Lista testów - wpisz tutaj wszystkie funkcje które mają być wykonane jako testy.
+        -:  373:*/
+        -:  374:TEST_LIST = {
+        -:  375:    { "Test of Calc_Reset", Test_Of_Calc_Reset },   /* Format to { "nazwa testu", nazwa_funkcji } */
+        -:  376:    { "Test of Calc_Set_A", Test_Of_Calc_Set_A },
+        -:  377:    { "Test of Calc_Get_A", Test_Of_Calc_Get_A },
+        -:  378:    { "Test of Calc_Oper", Test_Of_Calc_Oper },
+        -:  379:    { "Test of Calc_Mem", Test_Of_Calc_Mem },
+        -:  380:    { NULL, NULL }                                        /* To musi być na końcu */
+        -:  381:};
+        -:  382:    

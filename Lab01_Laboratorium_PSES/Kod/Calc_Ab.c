@@ -110,10 +110,10 @@ Std_ReturnType Calc_Get_A(sint32 *a)
 void Calc_Oper(Calc_Operation_T op, sint32 arg2)
 {
     sint32 result;
-    Std_ReturnType outValid = E_OK;
 
     if(akumulator != 0xFFFFFFFF)
     {
+        Std_ReturnType outValid = E_OK;
         switch(op)
         {
             case CALC_ADD:
@@ -152,11 +152,10 @@ void Calc_Oper(Calc_Operation_T op, sint32 arg2)
 */
 void Calc_Mem(Calc_MemOp_T op)
 {
-    sint32 arg2, result;
-    Std_ReturnType outValid = E_OK;
-
     if(akumulator != 0xFFFFFFFF)
     {
+        sint32 arg2, result;
+        Std_ReturnType outValid = E_OK;
         switch(op)
         {
             case CALC_MEM_ADD:
